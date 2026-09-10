@@ -1,0 +1,56 @@
+   16  sudo sh -c 'echo "auto enp0s8" > /etc/network/interface.d/lan-empresa
+   94  ls -l --time-style=full-iso <ruta_del_archivo>
+  126  printf '%s\n\n' "INFORME FIN DE SEMANA - Grupo bitacora-4" > ~/informe-fds.txt
+  127  printf '%s\n' "P1: Intentos fallidos de autenticación" >> ~/informe-fds.txt
+  128  printf 'cmd: %s\n' "grep 'Failed password' auth.log | wc -l" >> ~/informe-fds.txt
+  129  grep 'Failed password' auth.log | wc -l >> ~/informe-fds.txt
+  130  printf '\n' >> ~/informe-fds.txt
+  131  printf '%s\n' "P2: Top de IPs atacantes" >> ~/informe-fds.txt
+  132  printf 'cmd: %s\n' "grep 'Failed password' auth.log | grep -oE 'from [0-9.]+' | cut -d' ' -f2 | sort | uniq -c | sort -rn | head" >> ~/informe-fds.txt
+  133  grep "Failed password" auth.log | grep -oE "from [0-9.]+" | cut -d' ' -f2 | sort | uniq -c | sort -rn | head >> ~/informe-fds.txt
+  134  printf '\n' >> ~/informe-fds.txt
+  135  printf '%s\n' "P3: Acceso logrado y permanencia del atacante" >> ~/informe-fds.txt
+  136  printf 'cmd: %s\n' "grep 'Accepted password' auth.log" >> ~/informe-fds.txt
+  137  grep "Accepted password" auth.log >> ~/informe-fds.txt
+  138  printf 'cmd: %s\n' "grep -E 'session (opened|closed)' auth.log" >> ~/informe-fds.txt
+  139  grep -E "session (opened|closed)" auth.log >> ~/informe-fds.txt
+  140  printf '\n' >> ~/informe-fds.txt
+  141  printf '%s\n' "Bonus P3: Comando ejecutado y fecha del archivo sospechoso" >> ~/informe-fds.txt
+  142  printf 'cmd: %s\n' "grep -i 'COMMAND' auth.log" >> ~/informe-fds.txt
+  143  grep -i "COMMAND" auth.log >> ~/informe-fds.txt
+  144  printf 'cmd: %s\n' "ls -l --time-style=full-iso /tmp/x.sh" >> ~/informe-fds.txt
+  145  ls -l --time-style=full-iso /tmp/x.sh >> ~/informe-fds.txt
+  146  printf '\n' >> ~/informe-fds.txt
+  147  printf '%s\n' "P4: Fallas en la tarea nocturna de respaldo" >> ~/informe-fds.txt
+  148  printf 'cmd: %s\n' "grep 'No space left' respaldo.log" >> ~/informe-fds.txt
+  149  grep "No space left" respaldo.log >> ~/informe-fds.txt
+  151  printf '%s\n' "P4: Fallas en la tarea nocturna de respaldo" >> ~/informe-fds.txt
+  152  printf 'cmd: %s\n' "grep 'No space left' respaldo.log" >> ~/informe-fds.txt
+  153  grep "No space left" respaldo.log >> ~/informe-fds.txt
+  154  printf '\n' >> ~/informe-fds.txt
+  158  ls /noexiste > salida.txt 2> error.txt
+  163  printf '%s\n\n' "INFORME FIN DE SEMANA - Grupo bitacora-4" > ~/informe-fds.txt
+  164  printf '%s\n' "P1: Intentos fallidos de autenticación" >> ~/informe-fds.txt
+  165  printf 'cmd: %s\n' "grep 'Failed password' auth.log | wc -l" >> ~/informe-fds.txt
+  166  grep 'Failed password' auth.log | wc -l >> ~/informe-fds.txt
+  167  printf '\n' >> ~/informe-fds.txt
+  168  printf '%s\n' "P2: Top de IPs atacantes" >> ~/informe-fds.txt
+  169  printf 'cmd: %s\n' "grep 'Failed password' auth.log | grep -oE 'from [0-9.]+' | cut -d' ' -f2 | sort | uniq -c | sort -rn | head" >> ~/informe-fds.txt
+  170  grep "Failed password" auth.log | grep -oE "from [0-9.]+" | cut -d' ' -f2 | sort | uniq -c | sort -rn | head >> ~/informe-fds.txt
+  171  printf '\n' >> ~/informe-fds.txt
+  172  printf '%s\n' "P3: Acceso logrado y permanencia del atacante" >> ~/informe-fds.txt
+  173  printf 'cmd: %s\n' "grep 'Accepted password' auth.log" >> ~/informe-fds.txt
+  174  grep "Accepted password" auth.log >> ~/informe-fds.txt
+  175  printf 'cmd: %s\n' "grep -E 'session (opened|closed)' auth.log" >> ~/informe-fds.txt
+  176  grep -E "session (opened|closed)" auth.log >> ~/informe-fds.txt
+  177  printf '\n' >> ~/informe-fds.txt
+  178  printf '%s\n' "Bonus P3: Comando ejecutado y fecha del archivo sospechoso" >> ~/informe-fds.txt
+  179  printf 'cmd: %s\n' "grep -i 'COMMAND' auth.log" >> ~/informe-fds.txt
+  180  grep -i "COMMAND" auth.log >> ~/informe-fds.txt
+  181  printf 'cmd: %s\n' "ls -l --time-style=full-iso /tmp/x.sh" >> ~/informe-fds.txt
+  182  ls -l --time-style=full-iso /tmp/x.sh >> ~/informe-fds.txt
+  183  printf '\n' >> ~/informe-fds.txt
+  184  printf '%s\n' "P4: Fallas en la tarea nocturna de respaldo" >> ~/informe-fds.txt
+  185  printf 'cmd: %s\n' "grep 'No space left' respaldo.log" >> ~/informe-fds.txt
+  186  grep "No space left" respaldo.log >> ~/informe-fds.txt
+  187  history | grep -E '>>?' > ~/p02-historial.txt
